@@ -25,8 +25,8 @@ t0,phi0 : arbitary time and phase shifts that can be applied to the waveform
 * GetNoise()
 Obtain a realization of the (fake) LIGO noise in Fourier space. As PhenomGW, this outputs a [2,Nbins_f] matrix with the real and imaginary parts of the noise at the Nbins_f chosen frequencies
 
-* GetLIGOLikelihood(ModelGW,SignalGW)
-Returns the likelihood of the input model ModelGW given the input signal SignalGW.
+* GetLIGOLogLikelihood(ModelGW,SignalGW)
+Returns the logarithm of the likelihood of the input model ModelGW given the input signal SignalGW.
 Both input variables are [2,Nbins_f] matrices, while the output is a real number.
 
 * GetLIGOSNR(SignalGW)

@@ -77,20 +77,20 @@ def PhenomGW(M,eta,d,t0,phi0):
 def GetNoise():
     Noise = zeros([2,Nbins_f])
     for i in range(0,Nbins_f):
-        A_n = rn.randn()/sqrt(Freq_BinCenter[i])*Noise_Ampl[i]/sqrt(2)
+        A_n = rn.randn()*Noise_Ampl[i]/sqrt(2)
         Phi_n = rn.rand()*2.*pi
         Noise[0,i] = A_n*cos(Phi_n)
         Noise[1,i] = A_n*sin(Phi_n)
     return Noise
 
 # Compute likelihood of ModelGW given SignalGW
-def GetLIGOLikelihood(ModelGW,SignalGW):
+def GetLIGOLogLikelihood(ModelGW,SignalGW):
     mA = (ModelGW-SignalGW)
     sFreq = sqrt(Freq_BinWidth)
     mA[0,:] = mA[0,:]/Noise_Ampl[:]*sFreq[:]
     mA[1,:] = mA[1,:]/Noise_Ampl[:]*sFreq[:]
     mL=norm(mA)**2.
-    return exp(-2.*mL)
+    return -2.*mL
 
 # Compute SNR of SignalGW
 def GetLIGOSNR(SignalGW):
