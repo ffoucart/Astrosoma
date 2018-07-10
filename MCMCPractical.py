@@ -83,7 +83,9 @@ def GetNoise():
         Noise[1,i] = A_n*sin(Phi_n)
     return Noise
 
-# Compute likelihood of ModelGW given SignalGW
+# Compute ln(likelihood) of ModelGW given SignalGW
+# We return the log of the likelihood, as the likelihood itself
+# is often a very small number : ln(L) ~ -1000.
 def GetLIGOLogLikelihood(ModelGW,SignalGW):
     mA = (ModelGW-SignalGW)
     sFreq = sqrt(Freq_BinWidth)
